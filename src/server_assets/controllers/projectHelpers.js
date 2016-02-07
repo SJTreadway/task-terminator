@@ -146,7 +146,7 @@ module.exports = {
     },
 
     triggeredProject(date) {
-      let deadline = '';
+      var deadline = '';
       if (template.setup.dueDate.target === 'Today') {
         date = timeCtrl.deadlineToday();
       } else if (template.setup.dueDate.target === 'Specific Date') {
