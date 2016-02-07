@@ -72,7 +72,15 @@ gulp.task('develop', function () {
     .on('restart', function () {
       console.log('restarted!')
     })
-})
+});
+
+gulp.task('serveprod', function() {
+  connect.server({
+    root: desktop/task-terminator/task-terminator,
+    port: process.env.PORT || 8000,
+    livereload: false
+  });
+});
 
 
 gulp.task('default', ['develop', 'watch']);
