@@ -334,8 +334,8 @@ nextBusinessDay: function () {
         //Sets a number for day of the week...Sunday = 0, Monday = 1 etc.
         const today = moment().day();
         const nextBD = today + increaseDays;
-        let flag = false;
-        for (let i = 1; i < 6 ; i++) {
+        var flag = false;
+        for (var i = 1; i < 6 ; i++) {
             if (i === nextBD) {
                 flag = true;
             }

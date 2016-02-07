@@ -74,12 +74,4 @@ gulp.task('develop', function () {
     })
 });
 
-//gulp.task('serveprod', function() {
-//  connect.server({
-//    port: process.env.PORT || 8000,
-//    livereload: false
-//  });
-//});
-
-
 gulp.task('default', ['develop', 'watch']);
