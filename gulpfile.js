@@ -76,7 +76,6 @@ gulp.task('develop', function () {
 
 gulp.task('serveprod', function() {
   connect.server({
-    root: src/server.js,
     port: process.env.PORT || 8000,
     livereload: false
   });
