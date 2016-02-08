@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TaskTerminator/task-terminator.git"
+    "url": "git+https://github.com/SJTreadway/task-terminator.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TaskTerminator/task-terminator/issues"
+    "url": "https://github.com/SJTreadway/task-terminator/issues"
   },
-  "homepage": "https://github.com/TaskTerminator/task-terminator/#readme",
+  "homepage": "https://github.com/SJTreadway/task-terminator/#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
