@@ -1,0 +1,24 @@
+'use strict';
+
+var mongoose = require('mongoose');
+
+//Model of tasks tied to active projects. References department, position, and individual
+var projectTaskSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  friendlyId: { type: String, unique: true },
+  description: { type: String },
+  status: { type: String, enum: ['Incomplete', 'Complete'], default: 'Incomplete' },
+  associatedProject: { type: String, ref: 'Project' },
+  date: {
+    created: { type: Date, default: new Date() },
+    deadline: { type: Date }
+  },
+  assignment: {
+    departments: { type: String, ref: 'Department' },
+    positions: { type: String, ref: 'Position' },
+    employees: { type: String, ref: 'Employee' }
+  }
+});
+
+module.exports = mongoose.model('ProjectTask', projectTaskSchema);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZlcl9hc3NldHMvbW9kZWxzL1Byb2plY3RUYXNrLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBTSxXQUFXLFFBQVEsVUFBUixDQUFYOzs7QUFHTixJQUFNLG9CQUFvQixJQUFJLFNBQVMsTUFBVCxDQUFnQjtBQUM1QyxRQUFNLEVBQUMsTUFBTSxNQUFOLEVBQWMsVUFBVSxJQUFWLEVBQXJCO0FBQ0EsY0FBWSxFQUFDLE1BQU0sTUFBTixFQUFjLFFBQVEsSUFBUixFQUEzQjtBQUNBLGVBQWEsRUFBQyxNQUFLLE1BQUwsRUFBZDtBQUNBLFVBQVEsRUFBQyxNQUFNLE1BQU4sRUFBYyxNQUFNLENBQUMsWUFBRCxFQUFlLFVBQWYsQ0FBTixFQUFrQyxTQUFTLFlBQVQsRUFBekQ7QUFDQSxxQkFBb0IsRUFBQyxNQUFLLE1BQUwsRUFBYSxLQUFJLFNBQUosRUFBbEM7QUFDQSxRQUFNO0FBQ0osYUFBUyxFQUFDLE1BQU0sSUFBTixFQUFZLFNBQVMsSUFBSSxJQUFKLEVBQVQsRUFBdEI7QUFDQSxjQUFVLEVBQUMsTUFBTSxJQUFOLEVBQVg7R0FGRjtBQUlBLGNBQVk7QUFDUixpQkFBYSxFQUFDLE1BQUssTUFBTCxFQUFhLEtBQUssWUFBTCxFQUEzQjtBQUNBLGVBQVcsRUFBQyxNQUFLLE1BQUwsRUFBYSxLQUFLLFVBQUwsRUFBekI7QUFDQSxlQUFXLEVBQUMsTUFBSyxNQUFMLEVBQWEsS0FBSyxVQUFMLEVBQXpCO0dBSEo7Q0FWd0IsQ0FBcEI7O0FBaUJOLE9BQU8sT0FBUCxHQUFpQixTQUFTLEtBQVQsQ0FBZSxhQUFmLEVBQThCLGlCQUE5QixDQUFqQiIsImZpbGUiOiJzZXJ2ZXJfYXNzZXRzL21vZGVscy9Qcm9qZWN0VGFzay5qcyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IG1vbmdvb3NlID0gcmVxdWlyZSgnbW9uZ29vc2UnKTtcclxuXHJcbi8vTW9kZWwgb2YgdGFza3MgdGllZCB0byBhY3RpdmUgcHJvamVjdHMuIFJlZmVyZW5jZXMgZGVwYXJ0bWVudCwgcG9zaXRpb24sIGFuZCBpbmRpdmlkdWFsXHJcbmNvbnN0IHByb2plY3RUYXNrU2NoZW1hID0gbmV3IG1vbmdvb3NlLlNjaGVtYSh7XHJcbiAgbmFtZToge3R5cGU6IFN0cmluZywgcmVxdWlyZWQ6IHRydWV9LFxyXG4gIGZyaWVuZGx5SWQ6IHt0eXBlOiBTdHJpbmcsIHVuaXF1ZTogdHJ1ZX0sXHJcbiAgZGVzY3JpcHRpb246IHt0eXBlOlN0cmluZ30sXHJcbiAgc3RhdHVzOiB7dHlwZTogU3RyaW5nLCBlbnVtOiBbJ0luY29tcGxldGUnLCAnQ29tcGxldGUnXSwgZGVmYXVsdDogJ0luY29tcGxldGUnfSxcclxuICBhc3NvY2lhdGVkUHJvamVjdCA6IHt0eXBlOlN0cmluZywgcmVmOidQcm9qZWN0J30sXHJcbiAgZGF0ZToge1xyXG4gICAgY3JlYXRlZDoge3R5cGU6IERhdGUsIGRlZmF1bHQ6IG5ldyBEYXRlKCl9LFxyXG4gICAgZGVhZGxpbmU6IHt0eXBlOiBEYXRlfSxcclxuICB9LFxyXG4gIGFzc2lnbm1lbnQ6IHtcclxuICAgICAgZGVwYXJ0bWVudHM6IHt0eXBlOlN0cmluZywgcmVmOiAnRGVwYXJ0bWVudCd9LFxyXG4gICAgICBwb3NpdGlvbnM6IHt0eXBlOlN0cmluZywgcmVmOiAnUG9zaXRpb24nfSxcclxuICAgICAgZW1wbG95ZWVzOiB7dHlwZTpTdHJpbmcsIHJlZjogJ0VtcGxveWVlJ31cclxuICB9XHJcbn0pO1xyXG5cclxubW9kdWxlLmV4cG9ydHMgPSBtb25nb29zZS5tb2RlbCgnUHJvamVjdFRhc2snLCBwcm9qZWN0VGFza1NjaGVtYSk7XHJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
